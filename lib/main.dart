@@ -59,7 +59,6 @@ class _GoceryPartnerState extends State<GoceryPartner>
     return GetMaterialApp(
       title: 'Gocery Partner',
       debugShowCheckedModeBanner: false,
-      opaqueRoute: true,
       initialBinding: Dependency(),
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
