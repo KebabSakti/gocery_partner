@@ -5,6 +5,8 @@ import 'package:gocery_partner/feature/account/data/datasource/remote/account_re
 import 'package:gocery_partner/feature/account/data/repository/account_repository_impl.dart';
 import 'package:gocery_partner/feature/auth/data/datasource/remote/auth_remote_datasource.dart';
 import 'package:gocery_partner/feature/auth/data/repository/auth_repository_impl.dart';
+import 'package:gocery_partner/feature/order/data/datasource/remote/order_remote_datasource.dart';
+import 'package:gocery_partner/feature/order/data/repository/order_repository_impl.dart';
 
 class Dependency extends Bindings {
   @override
@@ -26,5 +28,11 @@ class Dependency extends Bindings {
           datasource: AccountRemoteDatasource(client: Get.find<NetworkImpl>())),
       fenix: true,
     );
+
+    //ORDER
+    Get.lazyPut(
+        () => OrderRepositoryImpl(
+            datasource: OrderRemoteDatasource(client: Get.find<NetworkImpl>())),
+        fenix: true);
   }
 }

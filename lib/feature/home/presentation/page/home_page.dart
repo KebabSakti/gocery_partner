@@ -190,11 +190,50 @@ Widget _eventBody(HomePageController controller) {
             'Websocket Data',
             style: Get.textTheme.headline3,
           ),
+          const Divider(),
           const SizedBox(height: kMediumPadding),
           Obx(() {
-            return Text(
-              controller.websocketData(),
-              style: Get.textTheme.bodyText1,
+            return Expanded(
+              child: SingleChildScrollView(
+                child: (controller.websocketData().isEmpty)
+                    ? const SizedBox.shrink()
+                    : Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            'Anda mendapatkan orderan baru',
+                            style: Get.textTheme.headline2,
+                          ),
+                          const SizedBox(height: kMediumPadding),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              ElevatedButton(
+                                onPressed: () {
+                                  controller.rejectOrder(
+                                      orderUid:
+                                          controller.websocketData()['uid']);
+                                },
+                                child: const Text('Tolak'),
+                              ),
+                              const SizedBox(width: kMediumPadding),
+                              ElevatedButton(
+                                onPressed: () {
+                                  controller.acceptOrder(
+                                      orderUid:
+                                          controller.websocketData()['uid']);
+                                },
+                                child: const Text('Terima'),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                // child: Text(
+                //   controller.websocketData(),
+                //   style: Get.textTheme.bodyText1,
+                // ),
+              ),
             );
           }),
         ],

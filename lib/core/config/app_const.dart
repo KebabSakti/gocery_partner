@@ -71,6 +71,8 @@ const String kAuthAccess = 'partner/auth/access';
 const String kAuthRevoke = 'partner/auth/revoke';
 const String kPartnerAccount = 'partner/accounts';
 const String kPartnerAccountStatus = 'partner/accounts/status';
+const String kAcceptOrder = 'partner/dev/orders/accept';
+const String kRejectOrder = 'partner/dev/orders/reject';
 
 //ROUTE
 const String kLandingPage = '/landingpage';
